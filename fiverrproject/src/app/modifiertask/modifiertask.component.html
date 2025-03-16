@@ -1,0 +1,46 @@
+<main>
+    <div class="container">
+        <button style="margin-left: 40px; margin-top: 40px;"  class="btn btn-primary">
+            <i class="fas fa-arrow-left me-3"></i>
+        </button>
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4" *ngIf="selectedTask" @fadeIn>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <!-- Logo -->
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="" class="logo d-flex align-items-center w-auto">
+                                <span class="d-none d-lg-block">
+                                    <i class="fas fa-edit me-3"></i>
+                                    <span class="custom-font">Edit User</span>
+                                </span>
+                            </a>
+                        </div>
+                        <p class="text-center small">Provide the user's information to update the account</p>
+                        <div class="card-body">
+                            <form (ngSubmit)=" onUpdateTask()" class="row g-3 needs-validation">
+                                <div class="col-12">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input [(ngModel)]="selectedTask.title" name="title" class="form-control" required>
+                                </div>
+                               
+                                
+                                
+                                <div class="card-body">
+                                    <label for="status">Statut</label>
+                                    <select class="form-control" id="status" [(ngModel)]="selectedTask.status" name="status">
+                                      <option value="in progress">in progress</option>
+                                      <option value="completed">completed</option>
+                                      <option value="in review">in review</option>
+                                      <option value="not started">not started</option>
+                                    </select>
+                                  </div>
+                                <button type="submit" class="btn btn-primary">Update User</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

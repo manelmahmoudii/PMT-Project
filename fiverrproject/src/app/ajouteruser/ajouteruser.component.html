@@ -1,0 +1,114 @@
+<main>
+  
+  
+  <div class="container">
+    <button style="margin-left: 40px; margin-top: 40px;" (click)="onUser()" class="btn btn-primary">
+      <i class="fas fa-arrow-left me-3"></i>
+  </button>
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4" @fadeIn>
+      
+  
+      
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+            <!-- Logo -->
+            <div class="d-flex justify-content-center py-4">
+              <a href="" class="logo d-flex align-items-center w-auto">
+              
+                <span class="d-none d-lg-block"><i class="fas fa-plus-circle me-3"></i><span class="custom-font">Add User</span></span>
+              </a>
+              
+            </div>
+            <p class="text-center small">Provide the user's personal information to create a new account</p>
+            <!-- End Logo -->
+
+            <div class="">
+              <div class="card-body">
+
+                <!-- Header of the form -->
+                <div class="pt-4 pb-2">
+                  
+                
+                </div>
+
+                <!-- Form begins -->
+                <form (ngSubmit)="onSubmit()" #addUserForm="ngForm" class="row g-3 needs-validation" novalidate>
+                  
+                  <!-- First Name -->
+                  <div class="col-12">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text"  id="form2ExampleFirstName"
+                      [(ngModel)]="newUser.firstName" name="firstName" class="form-control" required>
+                    <div class="invalid-feedback">Please, enter your first name!</div>
+                  </div>
+
+                  <!-- Last Name -->
+                  <div class="col-12">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="form2ExampleLastName"
+                      [(ngModel)]="newUser.lastName" name="lastName" required>
+                    <div class="invalid-feedback">Please, enter your last name!</div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="col-12">
+                    <label for="form2ExampleEmail" class="form-label">Email</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text" id="inputGroupPrepend">@</span>
+                      <input type="email" class="form-control" id="form2ExampleEmail"
+                        [(ngModel)]="newUser.email" name="email" required>
+                      <div class="invalid-feedback">Please, enter your email!</div>
+                    </div>
+                  </div>
+
+                  <!-- Password -->
+                  <div class="col-12">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="form2ExamplePassword" class="form-control"
+                      [(ngModel)]="newUser.password" name="password" required>
+                    <div class="invalid-feedback">Please, enter your password!</div>
+                  </div>
+
+                  <!-- Verified Checkbox -->
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="verified"
+                        [(ngModel)]="newUser.verified" name="verified">
+                      <label class="form-check-label" for="verified">Verified</label>
+                    </div>
+                  </div>
+
+                  <!-- Logged In Checkbox -->
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="loggedIn"
+                        [(ngModel)]="newUser.loggedIn" name="loggedIn">
+                      <label class="form-check-label" for="loggedIn">Logged In</label>
+                    </div>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary mt-3">Add User</button>
+
+                  </div>
+                 
+
+                </form>
+             
+                 
+                <!-- Form ends -->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+</main>

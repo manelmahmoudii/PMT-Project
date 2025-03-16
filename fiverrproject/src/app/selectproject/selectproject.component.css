@@ -1,0 +1,35 @@
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(217, 217, 217, 0.693); /* Ajustez la couleur et l'opacité selon vos besoins */
+    z-index: 1; /* Placez l'overlay au-dessus de l'image d'arrière-plan */
+}
+.project-name {
+    color: rgba(33, 31, 31, 0.774); /* Change la couleur du texte en noir */
+    position: relative; /* Permet de s'assurer que le texte reste au-dessus de l'overlay */
+    z-index: 2; /* S'assure que le texte est au-dessus de l'overlay */
+}
+.status-completed {
+    color: green;
+    font-weight: bold;
+}
+
+.status-not-started {
+    color: red;
+    font-weight: bold;
+}
+
+.status-in-progress {
+    color: rgb(28, 89, 159);
+    font-weight: bold;
+}
+
+.status-in-review {
+    color: orange;
+    font-weight: bold;
+}

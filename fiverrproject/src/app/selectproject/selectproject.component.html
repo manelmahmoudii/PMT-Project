@@ -1,0 +1,140 @@
+
+<html >
+
+<ul class="breadcrumb-animation">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+    <body>
+
+
+
+       
+<app-navbar></app-navbar>
+
+         <!-- Header Start -->
+       
+         <div class="container-fluid bg-breadcrumb"  *ngIf="selectedProject" [ngStyle]="{'background-image': selectedProject.imageUrl ? 'url(' + selectedProject.imageUrl + ')' : 'none'}">
+            <div class="overlay"></div>
+           
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="display-3 mb-4 wow fadeInDown project-name" data-wow-delay="0.1s"  >{{ selectedProject?.name }}</h3>
+                <ol class="breadcrumb justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Projects</a></li>
+                    <li class="breadcrumb-item active text-primary">{{ selectedProject?.name }}</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+        <!-- Pricing Start -->
+        <div class="container-fluid price py-5">
+            
+            <div class="container py-5">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 900px;">
+                    <h4 class="text-primary">Description</h4>
+                    <p class="mb-0"> {{ selectedProject?.description }}
+                    </p>
+                </div>
+                <div class="row g-5 justify-content-center">
+                    
+                   
+                    <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.3s" style="width: 800px;" >
+                        
+                        <div class="price-item bg-light rounded text-center">
+                            
+                            <div class="pice-item-offer"></div>
+                            <div class="text-center text-primary border-bottom d-flex flex-column justify-content-center p-4" style="width: 100%; height: 160px;">
+                                <p class="fs-2 fw-bold text-uppercase mb-0">tasks</p>
+                                                   
+                            </div>
+                            <div class="text-start p-5">
+                                <h5>Add Task</h5>
+                                <form (ngSubmit)="createNewTask()" class="d-flex align-items-center">
+                                    <div>
+                                        <input type="text" class="form-control" style="width: 400px;" id="taskTitle" [(ngModel)]="taskTitle" name="taskTitle" required>
+                                    </div>
+                            
+                                    <!-- Sélecteur de statut -->
+                                    <div style="margin-left: 10px;">
+                                        <select class="form-select nav-link dropdown-toggle active" [(ngModel)]="taskStatus" name="taskStatus" required>
+                                            <option value="" disabled selected>Status</option>
+                                            <option value="not started">Not Started</option>
+                                            <option value="in progress">In Progress</option>
+                                            <option value="in review">In Review</option>
+                                            <option value="completed">Completed</option>
+                                        </select>
+                                    </div>
+                                    <!-- Bouton d'ajout avec icône -->
+                                    <button type="submit" style="margin-left: 10px;" class="btn btn-primary">
+                                        <i class="fas fa-plus-circle"></i>
+                                    </button>
+                                </form>
+                            
+                                <br>
+                            
+                                <br>
+                                <!-- Tableau des tâches -->
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Assigned To</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let task of selectedProject?.tasks">
+                                            <td>
+                                                <ng-container [ngSwitch]="task.status">
+                                                    <i *ngSwitchCase="'completed'" class="fas fa-check text-success me-1"></i>
+                                                    <i *ngSwitchCase="'in progress'" class="fas fa-spinner status-in-progress me-1"></i>
+                                                    <i *ngSwitchCase="'in review'" class="fas fa-hourglass-half text-warning me-1"></i>
+                                                    <i *ngSwitchCase="'not started'" class="fas fa-times text-danger me-1"></i>
+                                                    <i *ngSwitchDefault class="fas fa-circle me-1"></i>
+                                                </ng-container>
+                                                <span class="text-primary">{{ task.title }}</span>
+                                            </td>
+                                            <td [ngClass]="{
+                                                    'status-completed': task.status === 'completed',
+                                                    'status-not-started': task.status === 'not started',
+                                                    'status-in-progress': task.status === 'in progress',
+                                                    'status-in-review': task.status === 'in review'
+                                                }">{{ task.status }}
+                                            </td>
+                                            <td><strong>{{ task.user.firstName }} {{ task.user.lastName }}</strong></td>
+                                            <td>
+                                                <button (click)="deleteTask(task.id)" class="btn btn-light border border-primary rounded-pill text-primary py-1">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pricing End -->
+
+
+       <app-footer></app-footer>
+      
+        
+   
+    </body>
+
+</html>

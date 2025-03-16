@@ -1,0 +1,40 @@
+<div class="card-body pb-0"  @fadeIn>
+   
+    <h5 class="card-title">Projects <span>| Today</span><button style="margin-left: 10px;" (click)="onAddProject()" class="btn btn-primary">
+        <i class="fas fa-plus-circle me-3"></i>Add Project
+    </button></h5>
+  
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">images</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">End Date</th>
+          <th scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td> <img [src]="project.imageUrl" alt="Project Image" class="img-fluid w-80" style=" width:150px;"  *ngIf="project.imageUrl" /></td>
+          <td>
+            <a routerLink="/project-details" class="text-primary fw-bold">{{ project.name }}</a>
+          </td>
+          <td style=" width:250px;">{{ project.description }}</td>
+          <td >{{ project.startDate | date }}</td>
+          <td class="fw-bold">{{ project.endDate | date }}</td>
+           
+<td style=" width:150px;">
+    <button (click)="onEditProject(project)" class="btn btn-light border border-primary rounded-pill text-primary py-2 ">
+      <i class="fas fa-pencil-alt"></i> 
+    </button>
+    <button style="margin-left: 10px;"  (click)="onDeleteProject(project.id)"  class="btn btn-primary">
+      <i class="fas fa-trash"></i> 
+    </button>
+  </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

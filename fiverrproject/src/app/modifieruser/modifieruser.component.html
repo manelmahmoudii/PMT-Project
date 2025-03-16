@@ -1,0 +1,61 @@
+<main>
+    <div class="container">
+        <button style="margin-left: 40px; margin-top: 40px;" (click)="onUser()" class="btn btn-primary">
+            <i class="fas fa-arrow-left me-3"></i>
+        </button>
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4" *ngIf="selectedUser" @fadeIn>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <!-- Logo -->
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="" class="logo d-flex align-items-center w-auto">
+                                <span class="d-none d-lg-block">
+                                    <i class="fas fa-edit me-3"></i>
+                                    <span class="custom-font">Edit User</span>
+                                </span>
+                            </a>
+                        </div>
+                        <p class="text-center small">Provide the user's information to update the account</p>
+                        <div class="card-body">
+                            <form (ngSubmit)="onUpdateUser()" class="row g-3 needs-validation">
+                                <div class="col-12">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input [(ngModel)]="selectedUser.firstName" name="firstName" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input [(ngModel)]="selectedUser.lastName" name="lastName" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input [(ngModel)]="selectedUser.email" name="email" type="email" class="form-control" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input [(ngModel)]="selectedUser.password" name="password" type="password" class="form-control">
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label class="form-label">Verified</label>
+                                    <select [(ngModel)]="selectedUser.verified" name="verified" class="form-select">
+                                        <option [value]="true">Verified</option>
+                                        <option [value]="false">Not Verified</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Status</label>
+                                    <select [(ngModel)]="selectedUser.loggedIn" name="loggedIn" class="form-select">
+                                        <option [value]="true">Connected</option>
+                                        <option [value]="false">Disconnected</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update User</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>

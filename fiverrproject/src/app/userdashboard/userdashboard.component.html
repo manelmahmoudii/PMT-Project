@@ -1,0 +1,77 @@
+<html lang="en">
+
+<body>
+
+    <!-- About Start -->
+    <div class="container-fluid overflow-hidden py-5"  style="margin-top: 6rem;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="RotateMoveLeft" style="width: 100%;">
+                        <img src="assets/img/HH.png" class="img-fluid w-100" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h4 class="mb-1 text-primary">Select Your Project</h4>
+                    <h1 class="display-5 mb-4">Start Your Project with PMT</h1>
+                    <p class="mb-4">Choose the project that suits your needs and take control of your workflow. With PMT, you can easily assign tasks, monitor progress, and collaborate effectively. Streamline your project management experience and achieve your goals efficiently with our powerful tool!</p>
+                   
+          
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    <!-- Spinner End -->
+
+
+   <app-navbar></app-navbar>
+
+
+    
+
+    <div class="container-fluid blog py-5" style="margin-top: -100px;">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 900px;">
+                <h4 class="text-primary">Our Projects</h4>
+                <h1 class="display-5 mb-4">Choose Your Project</h1>
+                <p>At PMT, we make team project management simple and efficient. Browse our latest projects and choose the one that aligns with your goals. Start collaborating with ease and drive your projects to success with us!</p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 wow fadeInUp" *ngFor="let project of projects"  data-wow-delay="0.1s">
+                    <div class="blog-item">
+                        <div class="blog-img">
+                            <img [src]="project.imageUrl" alt="Project Image" class="img-fluid w-100"  *ngIf="project.imageUrl" />
+
+                            <div class="blog-info">
+                                <!--span><i class="fa fa-calendar"></i> Début : {{ project.startDate | date:'dd MMM yyyy' }}</span--> 
+                                <span><i class="fa fa-calendar"></i> End : {{ project.endDate | date:'dd MMM yyyy' }}</span>
+                            </div>
+                        </div>
+                        <div class="blog-content text-dark border p-4">
+                            <h5 class="mb-4">{{ project.name }}</h5>
+                            <p class="mb-4">{{ project.description }}</p>
+                            <h6>Tasks :</h6>
+                            <ul>
+                                <li *ngFor="let task of project.tasks">
+                                    {{ task.title }}  - <strong>{{ task.status }}</strong>
+                                </li>
+                            </ul>
+                            <a class="btn btn-light rounded-pill py-2 px-4" (click)="viewProjectDetails(project)">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+    <app-footer></app-footer>
+    
+   
+
+   
+</body>
+</html>
